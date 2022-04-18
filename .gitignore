@@ -1,0 +1,4 @@
+.idea
+venv
+DataBase/myfin.db
+__pycache__
