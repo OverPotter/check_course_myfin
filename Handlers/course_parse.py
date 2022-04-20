@@ -77,6 +77,13 @@ class Parser(Comparison, Notification):
                                       float(file[s + 6].replace('\n', '')))
                     self._comparison_of_courses(BANKS_DICT[search], current_course)
 
+    def __clear_temp(self):
+        open(os.path.join(TEMP_PATH, 'result.html'), 'w', encoding='utf-8') as res_h:
+        res_h.close()
+        open(os.path.join(TEMP_PATH, 'result.txt'), 'w', encoding='utf-8') as res_t:
+        res_t.close()
+
+
     def run_all(self):
         self.__get_html_content()
         self.__parse_table()
@@ -84,3 +91,4 @@ class Parser(Comparison, Notification):
         self._search_max_courses()
         self._search_min_courses()
         self.run_notification(self._min_course_dict, self._max_course_dict)
+        self.__clear_temp()
